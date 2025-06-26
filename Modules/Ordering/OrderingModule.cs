@@ -1,3 +1,5 @@
+namespace Ordering;
+
 public static class OrderingModule
 {
     public static IServiceCollection AddOrderingModule(this IServiceCollection services, IConfiguration config)
@@ -7,9 +9,9 @@ public static class OrderingModule
         return services;
     }
 
-     public static IApplicationBuilder UseBasketModule(this IApplicationBuilder builder)
+    public static IApplicationBuilder UseOrderingModule(this IApplicationBuilder builder)
     {
-        
+
         return builder;
     }
 }

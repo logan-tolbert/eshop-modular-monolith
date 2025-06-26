@@ -1,7 +1,7 @@
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 
 // *-- Register services --*
 builder.Services.AddBasketModule(builder.Configuration)
@@ -10,20 +10,18 @@ builder.Services.AddBasketModule(builder.Configuration)
 
 var app = builder.Build();
 
-// *--Configure the HTTP request pipeline--*
-app.UseBasketModule()
-   .UseCatalogModule()
-   .UseOrderingModule();
+app.UseRouting();
 
-app.UseStaticFiles();
+// *--Configure the HTTP request pipeline--*
+app.UseBasketModule();
+app.UseCatalogModule();
+app.UseOrderingModule();
 
 app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-})
+app.MapControllers();
+
 app.Run();

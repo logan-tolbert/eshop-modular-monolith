@@ -28,6 +28,14 @@ DDD aims to solve complex problems by breaking the problem into smaller problems
     - an object identified by it ID
     - used to represent objects that have distinct identities and lifecycles
    
+    - **Anemic-Domain Model Entity**
+      - contains essential data structures with getters and setters with little to no domain logic 
+      - buisness rules and behaviors are typically implemented outside the entity
+
+    - **Rich-Domain Model Entity**
+      - contains both logic and data
+      - enhances entities with methods that encapsulate business rules or domain logic
+      
 - **Ubiquitous Language**
     - common language used by developers and domain experts, ensuring clarity and consistency
 

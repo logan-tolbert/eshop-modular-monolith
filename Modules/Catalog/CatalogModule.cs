@@ -1,3 +1,5 @@
+namespace Catalog;
+
 public static class CatalogModule
 {
     public static IServiceCollection AddCatalogModule(this IServiceCollection services, IConfiguration config)
@@ -9,7 +11,7 @@ public static class CatalogModule
 
     public static IApplicationBuilder UseCatalogModule(this IApplicationBuilder builder)
     {
-        
+
         return builder;
     }
 }
