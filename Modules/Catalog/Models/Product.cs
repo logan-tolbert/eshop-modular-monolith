@@ -1,8 +1,11 @@
+using Catalog.Products.Events;
+
 namespace Catalog.Models;
 
-public class Product : Entity<Guid>
+//* Inheriting from 'Aggregate' allows domain events to be raised
+public class Product : Aggregate<Guid>
 {
-    // 'private set' ensures properties can only be modified through the controlled methods
+    //* 'private set' ensures properties can only be modified through the controlled methods
     public string Name { get; private set; } = string.Empty;
     public List<string> Category { get; private set; } = [];
     public string Description { get; private set; } = string.Empty;
@@ -29,6 +32,9 @@ public class Product : Entity<Guid>
             Price = price,
         };
 
+        //* Raising domain event
+        product.AddDomainEvent(new ProductCreatedEvent(product));
+
         return product;
     }
 
@@ -48,5 +54,10 @@ public class Product : Entity<Guid>
         ImageFile = imageFile;
         Price = price;
 
+        if (Price != price)
+        {
+            Price = price;
+            AddDomainEvent(new ProductPriceChangeEvent(this));
+        }
     }
 }
