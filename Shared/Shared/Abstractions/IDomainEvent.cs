@@ -5,6 +5,6 @@ namespace Shared.Abstractions;
 public interface IDomainEvent : INotification
 {
     Guid EventId => Guid.NewGuid();
-    public DateTime OccurredOn => DateTime.Now();
-    public sring EventType => GetType().AssemblyQualifiedName!;
+    public DateTime OccurredOn => DateTime.Now;
+    public string EventType => GetType().AssemblyQualifiedName!;
 }
