@@ -22,7 +22,15 @@ DDD aims to solve complex problems by breaking the problem into smaller problems
     - represents a specific feature related to the domain
 
 - **Domain Event**
-    - significant occurences within a domain that need to be tracked or reacted to
+    - an event that occurs within the domian model
+    - used to trigger side effects or notify other parts of the system about changes within the domain
+    - published and consumed within a single domain
+    - In-process and syncronous, sent using an in-memory message bus
+
+- **Integration Event**
+    - communicates state changes or events between contexts or microservices
+    - overal system reaction to certain domain events
+    - Asyncronous, sent with a message broker over a queue.
     
 - **Entity**
     - an object identified by it ID
